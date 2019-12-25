@@ -1,0 +1,26 @@
+{
+    "name": "touge/laravel-dict",
+    "type": "package",
+    "require": {
+        "laravel/framework": "^6.2"
+    },
+    "authors": [
+        {
+            "name": "Nick Yuan",
+            "email": "lon.y@qq.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Touge\\LaravelDict\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Touge\\LaravelDict\\Providers\\ModuleServiceProvider"
+            ]
+
+        }
+    }
+}
