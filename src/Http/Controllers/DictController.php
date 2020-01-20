@@ -9,6 +9,7 @@
 namespace Touge\LaravelDict\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Touge\LaravelDict\Models\Dict;
 
 class DictController extends Controller
 {
@@ -17,11 +18,13 @@ class DictController extends Controller
      */
     private function initTablesData()
     {
+        $query= DB::connection('mysql_dict');
         //获取数据库表名称列表
-        $tables = DB::select('SHOW TABLE STATUS ');
+        $tables = $query->select('SHOW TABLE STATUS ');
+
         foreach ($tables as $key => $table) {
             //获取改表的所有字段信息
-            $columns = DB::select("SHOW FULL FIELDS FROM `" . $table->Name . "`");
+            $columns = $query->select("SHOW FULL FIELDS FROM `" . $table->Name . "`");
             $table->columns = $columns;
             $tables[$key] = $table;
         }
